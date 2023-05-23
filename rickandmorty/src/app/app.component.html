@@ -1,0 +1,26 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <div>
+      <a class="navbar-brand fs-3 p-5 title">Rick and Morty</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="ms-auto">  </ul>
+        <a class="navbar-brand fs-6 p-1" style="color: white;" routerLink="/home">Home</a>
+        <a class="navbar-brand fs-6 p-1" style="color: white;" routerLink="/about">About</a>
+
+
+        <a class="navbar-brand fs-6 p-1"style="color: white;" routerLink="/characters">Characters</a>
+
+      <form class="d-flex input-group w-auto p-2">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search"/>
+        <button class="btn btn-outline-success" style="outline-color: green;" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

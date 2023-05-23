@@ -1,0 +1,28 @@
+.card
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 30px;
+  border: none;
+}
+.card-inside{
+  flex-basis: calc(33.33% - 20px); /* Establece el ancho del elemento interno a un tercio del contenedor */
+  margin: 10px;
+  max-width: 350px;
+  border: solid black;
+  border-radius: 5%;
+  text-align: center;
+}
+img{
+  border-radius: 5%;
+}
+a{
+  color: black;
+  background-color: orange;
+  border: none;
+}
+
+.title{
+  text-align: center;
+}
