@@ -1,6 +1,6 @@
 import { RickAndMortyService } from './../rickandmorty.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Characters } from '../models/rickandmorty.model';
 
 @Component({
   selector: 'app-characters',
@@ -9,12 +9,16 @@ import { Router } from '@angular/router';
 })
 export class CharactersComponent implements OnInit {
 
-  characters:any = null;
+  characters?: Characters[];
 
-  constructor(private RickAndMortyService: RickAndMortyService) { }
+  constructor(private rickandmortyService: RickAndMortyService) { }
 
-  ngOnInit() {
-    this.RickAndMortyService.retornar()
-      .subscribe( result => this.characters = result)
+  ngOnInit(): void {
+    this.rickandmortyService.getAll().subscribe( result => {
+      this.characters = result;
+    },
+    error => {
+      console.log("Errores");
+    });
   }
 }

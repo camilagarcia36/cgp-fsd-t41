@@ -1,6 +1,7 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RickAndMortyService } from './../rickandmorty.service';
 import { Component, OnInit } from '@angular/core';
+import { Characters } from '../models/rickandmorty.model';
 
 
 @Component({
@@ -9,15 +10,57 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
+  id:any;
+  character: Characters = {
+    name: '',
+    species: '',
+    gender: '',
+    origin: '',
+    image: ''
+  }
 
-  characters:any = null;
+  constructor (private RickAndMortyService: RickAndMortyService, private _route: ActivatedRoute,
+               private router: Router) { }
 
-  id:any = this.route.snapshot.paramMap.get('id');
-  constructor(private RickAndMortyService: RickAndMortyService, private route: ActivatedRoute) { }
+  ngOnInit(): void {
 
-  ngOnInit() {
-    this.RickAndMortyService.getById(this.id)
-      .subscribe( result => this.characters = result)
+    this.id = this._route.snapshot.paramMap.get('id');
+
+    this.RickAndMortyService.get(this.id).subscribe(result => {
+      this.character = result;
+    },
+    error => {
+      console.log("Errores");
+    });
+  }
+
+  updateStatus(status: boolean): void {
+    const data = {
+      name: this.character.name,
+      gender: this.character.gender,
+      species: this.character.species,
+      origin: this.character.origin,
+      image: this.character.image,
+      status: status
+    };
+
+    this.RickAndMortyService.update(this.character.id, data).subscribe (response => {
+      this.character.status = status;
+      console.log(response);
+    },
+    error => {
+      console.log(error);
+    });
+  }
+
+  deleteCharacter(): void {
+    this.RickAndMortyService.delete(this.character.id).subscribe (response => {
+      console.log(response);
+      this.router.navigate(['/characters']);
+    },
+    error => {
+      console.log(error);
+    });
   }
 }
 
