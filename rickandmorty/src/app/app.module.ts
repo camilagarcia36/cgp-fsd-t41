@@ -9,6 +9,7 @@ import { CharactersComponent } from './characters/characters.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailsComponent } from './details/details.component';
 import { AddcharacterComponent } from './addcharacter/addcharacter.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AddcharacterComponent } from './addcharacter/addcharacter.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
