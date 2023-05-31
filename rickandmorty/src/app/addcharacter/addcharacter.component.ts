@@ -37,7 +37,7 @@ export class AddcharacterComponent implements OnInit {
       console.log(response);
       this.submitted = true;
     },
-    error => {
+      (    error: any) => {
       console.log(error);
     });
   }
